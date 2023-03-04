@@ -1,6 +1,5 @@
 package com.shamsutdinov.springboot_3_1_2.model;
 
-
 import jakarta.persistence.*;
 
 @Entity
@@ -8,15 +7,9 @@ import jakarta.persistence.*;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "id", nullable = false)
     private Long id;
-
-    @Column(name = "email")
     private String email;
-
-    @Column(name = "name")
     private String name;
-
     @Column(name = "last_name")
     private String lastname;
 
