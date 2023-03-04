@@ -34,23 +34,21 @@ public class UserController {
 
     @GetMapping("/{id}")
     private String show(@PathVariable("id") Long id, Model model) {
-        try {
+        if (userService.getUserById(id).isEmpty()) {
+            return "redirect:/";
+        } else {
             model.addAttribute("user", userService.getUserById(id));
             return "/show";
-        } catch (NullPointerException e) {
-            e.printStackTrace();
-            return "redirect:/";
         }
     }
 
     @GetMapping("/{id}/edit")
     public String edit(Model model, @PathVariable("id") Long id) {
-        try {
+        if (userService.getUserById(id).isEmpty()) {
+            return "redirect:/";
+        } else {
             model.addAttribute("user", userService.getUserById(id));
             return "/edit";
-        } catch (NullPointerException e) {
-            e.printStackTrace();
-            return "redirect:/";
         }
     }
 
